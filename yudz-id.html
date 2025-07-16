@@ -11,6 +11,8 @@
       background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
       color: #fff;
       padding: 20px;
+      position: relative;
+      overflow-x: hidden;
     }
     header {
       text-align: center;
@@ -54,7 +56,7 @@
       color: #00ffe1;
       text-decoration: none;
     }
-    .chat-button, .msg-button {
+    .chat-button, .msg-button, .order-button {
       display: inline-block;
       margin-top: 20px;
       padding: 12px 25px;
@@ -66,7 +68,7 @@
       transition: 0.3s ease;
       box-shadow: 0 0 10px #00ffe1;
     }
-    .chat-button:hover, .msg-button:hover {
+    .chat-button:hover, .msg-button:hover, .order-button:hover {
       background: #00ccbb;
     }
     .social-icons a {
@@ -80,6 +82,19 @@
       font-size: 0.9em;
       color: #aaa;
     }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    input, textarea {
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      width: 100%;
+    }
+    textarea { resize: vertical; height: 80px; }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -87,6 +102,15 @@
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(40px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
     }
     @media(max-width: 600px){
       h1 { font-size: 2em; }
@@ -96,8 +120,10 @@
 </head>
 <body>
   <audio autoplay loop hidden>
-    <source src="https://files.catbox.moe/n8k61p.mp3" type="audio/mpeg">
-  </audio>  <header>
+    <source src="https://files.catbox.moe/l0rxp7.mp3" type="audio/mpeg">
+  </audio><canvas id="particles-js" class="particles"></canvas>
+
+  <header>
     <img src="https://i.ibb.co/K7vhSC5/izayoi-nonomi.jpg" alt="Izayoi Nonomi" class="anime-img">
     <h1>OmYudz - Jual/Sewa BOT WhatsApp</h1>
   </header>  <section>
@@ -129,6 +155,14 @@
     <h2>Kirim Pesan Cepat</h2>
     <a class="msg-button" href="https://wa.me/6285135673054?text=Halo%20OmYudz,%20saya%20tertarik%20dengan%20BOT-nya%20😊" target="_blank">🚀 Kirim Pesan Otomatis</a>
   </section>  <section>
+    <h2>Form Order Cepat</h2>
+    <form action="https://wa.me/6285135673054" method="get" target="_blank" onsubmit="return confirmSend(this)">
+      <input type="text" name="name" placeholder="Nama Anda" required>
+      <input type="text" name="durasi" placeholder="Durasi Sewa (1 Minggu / 1 Bulan / dst)" required>
+      <textarea name="pesan" placeholder="Pesan Tambahan (opsional)"></textarea>
+      <button type="submit" class="order-button">📦 Kirim Order</button>
+    </form>
+  </section>  <section>
     <h2>Media Sosial</h2>
     <div class="social-icons">
       <a href="https://wa.me/6285135673054" target="_blank">📱</a>
@@ -137,6 +171,32 @@
     </div>
   </section>  <div class="footer">
     <p>© 2025 OmYudz. Powered by Anime Style ✨</p>
-  </div>
-</body>
+  </div>  <script>
+    function confirmSend(form) {
+      const name = form.name.value;
+      const durasi = form.durasi.value;
+      const pesan = form.pesan.value || '-';
+      const msg = `Halo OmYudz, saya ${name}. Saya ingin sewa BOT dengan durasi ${durasi}. Pesan: ${pesan}`;
+      const url = `https://wa.me/6285135673054?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+      return false;
+    }
+  </script>  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 80 },
+        "color": { "value": "#00fff2" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.6 },
+        "size": { "value": 3 },
+        "line_linked": { "enable": true, "distance": 150, "color": "#00fff2", "opacity": 0.4, "width": 1 },
+        "move": { "enable": true, "speed": 2 }
+      },
+      "interactivity": {
+        "events": {
+          "onhover": { "enable": true, "mode": "grab" }
+        }
+      }
+    });
+  </script></body>
 </html>
