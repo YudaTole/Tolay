@@ -3,7 +3,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OmYudz - Jual/Sewa BOT</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Orbitron:wght@600&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -11,12 +11,23 @@
       background: linear-gradient(to bottom right, #1e1e2f, #2d2d44);
       color: #fff;
       padding: 20px;
+      animation: fadeIn 1s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     header {
       text-align: center;
       margin-bottom: 30px;
+      animation: slideDown 1s ease-in-out;
+    }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     header h1 {
+      font-family: 'Orbitron', sans-serif;
       font-size: 2.5em;
       color: #00bfff;
     }
@@ -25,6 +36,7 @@
       padding: 20px;
       background: rgba(255, 255, 255, 0.05);
       border-radius: 10px;
+      animation: fadeIn 1s ease forwards;
     }
     h2 {
       font-size: 1.8em;
@@ -53,9 +65,30 @@
     .anime-img {
       display: block;
       margin: 0 auto 20px;
-      width: 150px;
+      width: 180px;
       border-radius: 50%;
-      box-shadow: 0 0 15px rgba(255,255,255,0.2);
+      box-shadow: 0 0 20px rgba(0,255,255,0.4);
+      transition: transform 0.4s ease;
+    }
+    .anime-img:hover {
+      transform: scale(1.05);
+    }
+    .chat-button {
+      display: block;
+      margin: 30px auto;
+      padding: 12px 25px;
+      background: #00ffcc;
+      color: #000;
+      font-weight: bold;
+      text-align: center;
+      border-radius: 30px;
+      font-size: 1.1em;
+      width: fit-content;
+      transition: background 0.3s ease;
+      text-decoration: none;
+    }
+    .chat-button:hover {
+      background: #00ccaa;
     }
     @media(max-width: 600px){
       h1 { font-size: 2em; }
@@ -65,7 +98,7 @@
 </head>
 <body>
   <header>
-    <img src="https://i.ibb.co/4WN3xXz/sakuna-pfp.jpg" alt="OmYudz Anime" class="anime-img">
+    <img src="https://i.ibb.co/K7vhSC5/izayoi-nonomi.jpg" alt="Izayoi Nonomi" class="anime-img">
     <h1>OmYudz - Jual/Sewa BOT WhatsApp</h1>
   </header>  <section>
     <h2>Deskripsi</h2>
@@ -91,6 +124,7 @@
   </section>  <section>
     <h2>Kontak WhatsApp</h2>
     <p>Hubungi langsung melalui <a href="https://wa.me/6285135673054" target="_blank">WhatsApp 0851-3567-3054</a></p>
+    <a href="https://wa.me/6285135673054" class="chat-button" target="_blank">💬 Chat Sekarang</a>
   </section>  <section>
     <h2>Media Sosial</h2>
     <div class="social-icons">
